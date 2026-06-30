@@ -1,0 +1,6 @@
+/* ====================================================================
+   FONTS — Playfair Display (editorial serif) + Montserrat (sans)
+   Loaded from Google Fonts. Substitution note: brand uses these exact
+   families, served as webfonts (no local binaries shipped).
+   ==================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap");

@@ -1,0 +1,22 @@
+<!-- @dsCard group="Brand" viewport="700x200" name="Surfaces & Elevation" subtitle="Soft warm shadows, hairline borders, squared corners." -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--surface-canvas); display: flex; gap: 22px; align-items: center; justify-content: center; height: 100vh; }
+  .card { width: 150px; height: 110px; background: var(--surface-card); display: flex; flex-direction: column; justify-content: flex-end; padding: 14px; box-sizing: border-box; }
+  .b1 { border: 1px solid var(--line-soft); }
+  .b2 { box-shadow: var(--shadow-card); }
+  .b3 { box-shadow: var(--shadow-lift); }
+  .lbl { font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em; }
+  .t { font-family: var(--font-serif); font-size: 16px; color: var(--text-heading); }
+</style>
+</head>
+<body>
+  <div class="card b1"><span class="t">Hairline</span><span class="lbl">1px border</span></div>
+  <div class="card b2"><span class="t">Card</span><span class="lbl">soft shadow</span></div>
+  <div class="card b3"><span class="t">Lifted</span><span class="lbl">hover / modal</span></div>
+</body>
+</html>

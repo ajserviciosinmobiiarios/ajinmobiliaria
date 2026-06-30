@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>En Cartera · Aroa & Jon Servicios Inmobiliarios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0A0805;
+    --paper: #F5F0E8;
+    --gold: #C6A75E;
+    --gold-dim: rgba(198,167,94,0.15);
+    --gold-border: rgba(198,167,94,0.25);
+    --muted: rgba(245,240,232,0.58);
+    --sans: 'Montserrat', sans-serif;
+    --serif: 'Playfair Display', serif;
+  }
+  html, body { background: var(--black); color: var(--paper); font-family: var(--sans); -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+  /* NAV */
+  .nav { position: sticky; top: 0; z-index: 100; background: rgba(10,8,5,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--gold-border); padding: 0 clamp(20px,5vw,64px); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo img { height: 44px; width: auto; display: block; }
+  .nav-back { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
+  .nav-back:hover { color: var(--gold); }
+
+  /* HEADER */
+  .page-header { padding: clamp(48px,8vw,88px) clamp(24px,5vw,72px) clamp(32px,5vw,56px); max-width: 1240px; margin: 0 auto; }
+  .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  h1 { font-family: var(--serif); font-size: clamp(2rem,5vw,3rem); font-weight: 500; line-height: 1.1; color: var(--paper); margin-bottom: 16px; }
+  h1 em { font-style: italic; color: var(--gold); }
+  .header-sub { font-size: 16px; line-height: 1.7; color: var(--muted); max-width: 560px; }
+
+  /* FILTERS */
+  .filters-bar { padding: 0 clamp(24px,5vw,72px) 40px; max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .filter-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+  .filter-btn {
+    font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    background: transparent; border: 1px solid var(--gold-border); color: var(--muted); padding: 8px 18px; cursor: pointer;
+    transition: all 0.18s;
+  }
+  .filter-btn:hover { border-color: var(--gold); color: var(--paper); }
+  .filter-btn.active { background: var(--gold); border-color: var(--gold); color: var(--black); }
+  .filter-sep { width: 1px; height: 20px; background: var(--gold-border); margin: 0 4px; }
+
+  /* GRID */
+  .grid { padding: 0 clamp(24px,5vw,72px) clamp(64px,8vw,96px); max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 40px; }
+
+  /* CARD */
+  .card { background: rgba(255,255,255,0.025); border: 1px solid var(--gold-border); display: flex; flex-direction: column; overflow: hidden; transition: border-color 0.2s; }
+  .card:hover { border-color: rgba(198,167,94,0.5); }
+
+  .card-gallery { position: relative; aspect-ratio: 4/3; overflow: hidden; background: rgba(255,255,255,0.04); cursor: pointer; }
+  .card-gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .card:hover .card-gallery img { transform: scale(1.04); }
+  .card-gallery-nav { position: absolute; bottom: 12px; right: 12px; display: flex; gap: 6px; }
+  .card-gallery-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(245,240,232,0.35); cursor: pointer; transition: background 0.2s; border: none; padding: 0; }
+  .card-gallery-dot.active { background: var(--gold); }
+
+  .card-badge { position: absolute; top: 14px; left: 14px; font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: var(--gold); color: var(--black); padding: 5px 10px; }
+
+  .card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+  .card-tipo { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+  .card-titulo { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; line-height: 1.2; color: var(--paper); }
+  .card-dir { font-size: 12px; color: var(--muted); }
+  .card-desc { font-size: 13.5px; line-height: 1.65; color: rgba(245,240,232,0.72); }
+
+  .card-stats { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--gold-dim); border-bottom: 1px solid var(--gold-dim); margin: 4px 0; }
+  .stat { flex: 1 1 80px; padding: 12px 10px; text-align: center; border-right: 1px solid var(--gold-dim); }
+  .stat:last-child { border-right: none; }
+  .stat-val { font-family: var(--serif); font-size: 1.1rem; color: var(--paper); display: block; }
+  .stat-key { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 3px; display: block; }
+
+  .card-extras { display: flex; flex-wrap: wrap; gap: 6px; }
+  .extra-tag { font-size: 10.5px; font-weight: 500; border: 1px solid var(--gold-dim); color: var(--muted); padding: 4px 10px; }
+
+  .card-precio { font-family: var(--serif); font-size: 1.6rem; color: var(--gold); font-weight: 500; }
+
+  .card-cta { margin-top: auto; padding-top: 4px; }
+  .btn-idealista {
+    display: block; width: 100%; text-align: center; text-decoration: none;
+    background: var(--gold); color: var(--black);
+    font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 14px 24px; transition: opacity 0.2s;
+  }
+  .btn-idealista:hover { opacity: 0.88; }
+
+  /* EMPTY STATE */
+  .empty { display: none; grid-column: 1/-1; text-align: center; padding: 64px 0; color: var(--muted); font-size: 15px; }
+
+  /* FOOTER */
+  .page-footer { border-top: 1px solid var(--gold-border); padding: clamp(32px,5vw,48px) clamp(24px,5vw,72px); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .page-footer a { font-size: 12px; color: var(--muted); text-decoration: none; }
+  .page-footer a:hover { color: var(--gold); }
+  .page-footer span { font-size: 12px; color: rgba(245,240,232,0.25); }
+
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo"><img src="../../assets/logo-monogram-gold.png" alt="Aroa & Jon"></a>
+  <a href="/" class="nav-back">← Volver a la web</a>
+</nav>
+
+<div class="page-header">
+  <p class="eyebrow">Inmuebles en exclusiva · Gipuzkoa</p>
+  <h1>En <em>cartera</em></h1>
+  <p class="header-sub">Cada inmueble que gestionamos lo hacemos en exclusiva. Eso significa que cuando entras en un proceso con nosotros, hay un solo equipo trabajando para ti.</p>
+</div>
+
+<div class="filters-bar">
+  <span class="filter-label">Zona</span>
+  <button class="filter-btn active" data-filter="zona" data-val="all">Todas</button>
+  <button class="filter-btn" data-filter="zona" data-val="Hondarribia">Hondarribia</button>
+  <button class="filter-btn" data-filter="zona" data-val="Donostia">Donostia</button>
+  <button class="filter-btn" data-filter="zona" data-val="Irun">Irun</button>
+  <div class="filter-sep"></div>
+  <span class="filter-label">Tipo</span>
+  <button class="filter-btn active" data-filter="tipo" data-val="all">Todos</button>
+  <button class="filter-btn" data-filter="tipo" data-val="Villa">Villa</button>
+  <button class="filter-btn" data-filter="tipo" data-val="Chalet">Chalet</button>
+  <button class="filter-btn" data-filter="tipo" data-val="Piso">Piso</button>
+</div>
+
+<div class="grid" id="grid">
+  <p class="empty" id="empty">No hay inmuebles que coincidan con los filtros seleccionados.</p>
+</div>
+
+<footer class="page-footer">
+  <a href="/">← Volver a la web de Aroa & Jon</a>
+  <span>© 2026 · Aroa & Jon Servicios Inmobiliarios · Gipuzkoa</span>
+</footer>
+
+<script src="../../properties.js"></script>
+<script>
+(function() {
+  var activeZona = 'all';
+  var activeTipo = 'all';
+
+  function buildCard(p) {
+    var fotos = p.fotos || [];
+    var dots = fotos.map(function(_, i) {
+      return '<button class="card-gallery-dot' + (i === 0 ? ' active' : '') + '" data-idx="' + i + '" aria-label="Foto ' + (i+1) + '"></button>';
+    }).join('');
+
+    var extras = (p.extras || []).map(function(e) {
+      return '<span class="extra-tag">' + e + '</span>';
+    }).join('');
+
+    var statParcela = p.parcela
+      ? '<div class="stat"><span class="stat-val">' + p.parcela + '</span><span class="stat-key">Parcela</span></div>'
+      : '';
+
+    var badge = p.destacado ? '<span class="card-badge">Destacado</span>' : '';
+
+    return '<article class="card" data-zona="' + p.zona + '" data-tipo="' + p.tipo + '">' +
+      '<div class="card-gallery">' +
+        badge +
+        '<img src="' + (fotos[0] || '') + '" alt="' + p.titulo + '" id="img-' + p.id + '">' +
+        '<div class="card-gallery-nav">' + dots + '</div>' +
+      '</div>' +
+      '<div class="card-body">' +
+        '<div class="card-tipo">' + p.tipo + ' · ' + p.zona + '</div>' +
+        '<div class="card-titulo">' + p.titulo + '</div>' +
+        '<div class="card-dir">' + p.direccion + '</div>' +
+        '<p class="card-desc">' + p.descripcionCorta + '</p>' +
+        '<div class="card-stats">' +
+          '<div class="stat"><span class="stat-val">' + p.m2 + '</span><span class="stat-key">Superficie</span></div>' +
+          '<div class="stat"><span class="stat-val">' + p.habitaciones + '</span><span class="stat-key">Hab.</span></div>' +
+          '<div class="stat"><span class="stat-val">' + p.banos + '</span><span class="stat-key">Baños</span></div>' +
+          statParcela +
+        '</div>' +
+        '<div class="card-extras">' + extras + '</div>' +
+        '<div class="card-precio">' + p.precio + '</div>' +
+        '<div class="card-cta"><a href="' + p.idealista + '" target="_blank" rel="noopener" class="btn-idealista">Ver en Idealista →</a></div>' +
+      '</div>' +
+    '</article>';
+  }
+
+  function render() {
+    var grid = document.getElementById('grid');
+    var empty = document.getElementById('empty');
+    var props = window.AJ_PROPERTIES || [];
+    var filtered = props.filter(function(p) {
+      var zonaOk = activeZona === 'all' || p.zona === activeZona;
+      var tipoOk = activeTipo === 'all' || p.tipo === activeTipo;
+      return zonaOk && tipoOk;
+    });
+
+    // Remove existing cards (keep empty msg)
+    var cards = grid.querySelectorAll('.card');
+    cards.forEach(function(c) { c.remove(); });
+
+    if (filtered.length === 0) {
+      empty.style.display = 'block';
+      return;
+    }
+    empty.style.display = 'none';
+    filtered.forEach(function(p) {
+      var tmp = document.createElement('div');
+      tmp.innerHTML = buildCard(p);
+      var card = tmp.firstChild;
+      grid.appendChild(card);
+
+      // Gallery dots
+      var img = card.querySelector('img');
+      card.querySelectorAll('.card-gallery-dot').forEach(function(dot) {
+        dot.addEventListener('click', function(e) {
+          e.preventDefault();
+          var idx = parseInt(dot.dataset.idx);
+          img.src = p.fotos[idx];
+          card.querySelectorAll('.card-gallery-dot').forEach(function(d) { d.classList.remove('active'); });
+          dot.classList.add('active');
+        });
+      });
+    });
+  }
+
+  // Filter buttons
+  document.querySelectorAll('.filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var filter = btn.dataset.filter;
+      var val = btn.dataset.val;
+      document.querySelectorAll('.filter-btn[data-filter="' + filter + '"]').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      if (filter === 'zona') activeZona = val;
+      if (filter === 'tipo') activeTipo = val;
+      render();
+    });
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    { "source": "/", "destination": "/ui_kits/landing/index.html", "permanent": false },
+    { "source": "/lead-magnet", "destination": "/ui_kits/landing/lead-magnet.html", "permanent": false },
+    { "source": "/kit", "destination": "/ui_kits/landing/kit.html", "permanent": false },
+    { "source": "/confirma", "destination": "/ui_kits/landing/confirma.html", "permanent": false },
+    { "source": "/cartera", "destination": "/ui_kits/landing/cartera.html", "permanent": false }
+  ]
+}

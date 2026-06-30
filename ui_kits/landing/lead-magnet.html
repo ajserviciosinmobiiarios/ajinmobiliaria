@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kit del Vendedor · Aroa & Jon Servicios Inmobiliarios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0A0805;
+    --paper: #F5F0E8;
+    --gold: #C6A75E;
+    --gold-soft: rgba(198,167,94,0.5);
+    --gold-dim: rgba(198,167,94,0.15);
+    --muted: rgba(245,240,232,0.6);
+    --sans: 'Montserrat', sans-serif;
+    --serif: 'Playfair Display', serif;
+  }
+  html, body { background: var(--black); color: var(--paper); font-family: var(--sans); -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+  .page { max-width: 680px; margin: 0 auto; padding: clamp(48px, 8vw, 96px) clamp(24px, 5vw, 48px); }
+
+  /* Logo bar */
+  .logo-bar { margin-bottom: 56px; padding-bottom: 32px; border-bottom: 1px solid rgba(198,167,94,0.2); }
+  .logo-bar img { height: 100px; width: auto; display: block; }
+
+  /* Eyebrow */
+  .eyebrow { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+
+  /* Headline */
+  h1 { font-family: var(--serif); font-size: clamp(2rem, 6vw, 3rem); font-weight: 500; line-height: 1.1; color: var(--paper); margin-bottom: 20px; }
+  h1 em { font-style: italic; color: var(--gold); }
+
+  /* Subheadline */
+  .sub { font-family: var(--sans); font-size: 16px; line-height: 1.7; color: var(--muted); margin-bottom: 44px; }
+
+  /* What's inside */
+  .inside { border-top: 1px solid var(--gold-dim); padding-top: 32px; margin-bottom: 44px; }
+  .inside-label { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .items { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .items li { display: flex; gap: 14px; align-items: flex-start; font-size: 15px; line-height: 1.55; color: var(--paper); }
+  .items li::before { content: "→"; font-family: var(--serif); color: var(--gold); flex-shrink: 0; margin-top: 1px; }
+
+  /* Form */
+  .form-block { background: rgba(198,167,94,0.06); border: 1px solid rgba(198,167,94,0.22); padding: 36px; }
+  .form-label { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 10px; }
+  .form-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .form-row input[type="email"] {
+    flex: 1 1 200px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(198,167,94,0.35);
+    color: var(--paper);
+    font-family: var(--sans);
+    font-size: 15px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    border-radius: 0;
+    -webkit-appearance: none;
+  }
+  .form-row input[type="email"]::placeholder { color: rgba(245,240,232,0.35); }
+  .form-row input[type="email"]:focus { border-color: var(--gold); }
+  .form-row button {
+    flex: 0 0 auto;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  .form-row button:hover { opacity: 0.88; }
+  .form-row button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .form-note { font-family: var(--sans); font-size: 11.5px; color: var(--muted); margin-top: 14px; line-height: 1.5; }
+
+  /* Footer */
+  .page-footer { margin-top: 64px; padding-top: 32px; border-top: 1px solid rgba(198,167,94,0.12); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .page-footer a { font-family: var(--sans); font-size: 12px; color: var(--muted); text-decoration: none; }
+  .page-footer a:hover { color: var(--gold); }
+  .page-footer span { font-family: var(--sans); font-size: 12px; color: rgba(245,240,232,0.3); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="logo-bar">
+    <a href="/"><img src="../../assets/logo-dorado-transparente.png" alt="Aroa & Jon · Servicios Inmobiliarios"></a>
+  </div>
+
+  <p class="eyebrow">Recurso gratuito · Propietarios en Gipuzkoa</p>
+
+  <h1>El kit completo para vender tu inmueble <em>sin sustos</em> ni sorpresas.</h1>
+
+  <p class="sub">
+    Todo lo que nadie te da cuando decides vender — reunido en un solo lugar.
+    Vídeo de consejos, checklist de documentos, guía del proceso y prompt de IA.
+    Descárgalo gratis ahora.
+  </p>
+
+  <div class="inside">
+    <p class="inside-label">Qué hay dentro</p>
+    <ul class="items">
+      <li>Vídeo exclusivo de Aroa y Jon con los consejos clave antes de poner tu inmueble a la venta</li>
+      <li>Checklist: los 7 documentos que necesitas tener listos antes de vender (y dónde conseguirlos)</li>
+      <li>Guía: cómo vender y comprar a la vez sin quedarte en el aire — el proceso que nadie te explica</li>
+      <li>Prompt listo para copiar y usar con IA — para preparar tu estrategia de venta en minutos</li>
+    </ul>
+  </div>
+
+  <div class="form-block">
+    <label class="form-label" for="email-input">Tu email — recibes el kit al instante</label>
+    <form id="signup-form" action="https://app.kit.com/forms/9625324/subscriptions" method="POST" target="_blank">
+      <div class="form-row">
+        <input type="email" id="email-input" name="email_address" placeholder="tu@email.com" required aria-label="Dirección de email">
+        <button type="submit" id="signup-btn">Quiero el kit →</button>
+      </div>
+    </form>
+    <p class="form-note">Sin spam. Solo recursos útiles para propietarios en Gipuzkoa. Puedes darte de baja cuando quieras.</p>
+  </div>
+
+  <footer class="page-footer">
+    <a href="/">← Volver a la web de Aroa & Jon</a>
+    <span>© 2026 · Aroa & Jon Servicios Inmobiliarios</span>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var form = document.getElementById('signup-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e){
+    var email = form.querySelector('input[type="email"]');
+    if (!email || !email.value) return;
+    e.preventDefault();
+    form.removeAttribute('target');
+    var btn = document.getElementById('signup-btn');
+    if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
+    var go = function(){ window.location.href = '/confirma'; };
+    fetch(form.action, { method: 'POST', mode: 'no-cors', body: new FormData(form) })
+      .then(go).catch(go);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+/* ====================================================================
+   TYPOGRAPHY — Playfair Display (display/serif) + Montserrat (sans)
+   ==================================================================== */
+:root {
+  /* ---- Families ---- */
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans:  "Montserrat", system-ui, -apple-system, sans-serif;
+
+  /* ---- Display / editorial scale (serif) ---- */
+  --fs-display:  clamp(3rem, 6vw, 5.5rem);   /* @kind font */
+  --fs-h1:       clamp(2.5rem, 4.5vw, 4rem);  /* @kind font */
+  --fs-h2:       clamp(2rem, 3.2vw, 3rem);    /* @kind font */
+  --fs-h3:       clamp(1.5rem, 2.2vw, 2rem);  /* @kind font */
+  --fs-quote:    clamp(1.5rem, 2.6vw, 2.25rem); /* @kind font */
+
+  /* ---- Body / UI scale (sans) ---- */
+  --fs-lead:  1.25rem;   /* @kind font */
+  --fs-body:  1rem;      /* @kind font */
+  --fs-sm:    0.875rem;  /* @kind font */
+  --fs-xs:    0.75rem;   /* @kind font */
+  --fs-eyebrow: 0.8125rem; /* @kind font */
+
+  /* ---- Weights ---- */
+  --fw-serif-regular: 400; /* @kind font */
+  --fw-serif-medium:  500; /* @kind font */
+  --fw-serif-bold:    700; /* @kind font */
+  --fw-sans-light:    300; /* @kind font */
+  --fw-sans-regular:  400; /* @kind font */
+  --fw-sans-medium:   500; /* @kind font */
+  --fw-sans-semibold: 600; /* @kind font */
+  --fw-sans-bold:     700; /* @kind font */
+
+  /* ---- Line heights ---- */
+  --lh-tight:  1.08; /* @kind font */
+  --lh-snug:   1.25; /* @kind font */
+  --lh-body:   1.65; /* @kind font */
+
+  /* ---- Letter spacing ---- */
+  --ls-eyebrow: 0.22em;   /* @kind font */
+  --ls-label:   0.12em;   /* @kind font */
+  --ls-tight:  -0.01em;   /* @kind font */
+}

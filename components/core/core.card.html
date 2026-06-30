@@ -1,0 +1,58 @@
+<!-- @dsCard group="Components" viewport="700x440" name="Core — Buttons, Badges, Stats" subtitle="Button variants, eyebrow, badges, credential stats." -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--surface-canvas); padding: 28px 32px; color: var(--text-heading); }
+  .group { margin-bottom: 26px; }
+  .glabel { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+  .rowflex { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+  const { Button, Eyebrow, Badge, Stat } = window.AroaJonDesignSystem_6ad0b0;
+  function Demo() {
+    return (
+      <React.Fragment>
+        <div className="group">
+          <div className="glabel">Buttons</div>
+          <div className="rowflex">
+            <Button variant="primary">Quiero que me llamen</Button>
+            <Button variant="dark">Más información</Button>
+            <Button variant="outline">Nosotros</Button>
+            <Button variant="whatsapp">Escribir por WhatsApp</Button>
+            <Button variant="text">Ver servicios</Button>
+          </div>
+        </div>
+        <div className="group">
+          <div className="glabel">Eyebrow & Badges</div>
+          <div className="rowflex">
+            <Eyebrow>Bidasoa · Donostialdea · Gipuzkoa</Eyebrow>
+            <Badge>Personal Shopper</Badge>
+            <Badge variant="solid">Exclusiva</Badge>
+            <Badge variant="soft">Valoración gratuita</Badge>
+          </div>
+        </div>
+        <div className="group" style={{marginBottom:0}}>
+          <div className="glabel">Stats</div>
+          <div className="rowflex" style={{gap:56}}>
+            <Stat value="+25M€" label="Patrimonio gestionado" />
+            <Stat value="~10 años" label="Vendiendo en Gipuzkoa" />
+            <Stat value="Galardonado" label="Premios Century 21" />
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById("root")).render(<Demo/>);
+</script>
+</body>
+</html>

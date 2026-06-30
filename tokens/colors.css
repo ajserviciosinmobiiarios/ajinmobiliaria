@@ -1,0 +1,47 @@
+/* ====================================================================
+   COLORS — Aroa & Jon luxury real-estate palette
+   Base palette (cliente): #000000 · #C6A75E · #E6DAC9 · #F4F1EA · #FFFFFF
+   ==================================================================== */
+:root {
+  /* ---- Base neutrals ---- */
+  --aj-black:    #000000;  /* True black — high-contrast backgrounds, monogram */
+  --aj-ink:      #15140F;  /* Warm near-black — primary text on light */
+  --aj-graphite: #3A382F;  /* Softer dark for long-form body on light */
+  --aj-mist:     #8C897E;  /* Secondary text, metadata, captions */
+  --aj-stone:    #C8C3B6;  /* Hairline borders, dividers, disabled */
+  --aj-cream:    #E6DAC9;  /* Champagne — alt section fills, cards on dark */
+  --aj-sand:     #EFEAE0;  /* Soft section fill, subtle separation */
+  --aj-paper:    #F4F1EA;  /* Base canvas of every surface (never pure white) */
+  --aj-white:    #FFFFFF;  /* Pure white — reserved for crisp accents only */
+
+  /* ---- Gold (single brand accent) ---- */
+  --aj-gold:        #C6A75E;  /* Primary accent — wordmark, lines, emphasis */
+  --aj-gold-deep:   #A8884A;  /* Hover / pressed gold */
+  --aj-gold-soft:   #D8C190;  /* Light gold — on-dark hover, subtle fills */
+  --aj-gold-tint:   #F0E7D2;  /* Faint gold wash — highlighted rows */
+
+  /* ---- Semantic aliases — surfaces ---- */
+  --surface-canvas:    var(--aj-paper);
+  --surface-alt:       var(--aj-sand);
+  --surface-card:      var(--aj-white);
+  --surface-inverse:   var(--aj-black);
+  --surface-inverse-2: #1A1813;       /* Slightly raised on black */
+
+  /* ---- Semantic aliases — text ---- */
+  --text-heading:   var(--aj-ink);
+  --text-body:      var(--aj-graphite);
+  --text-muted:     var(--aj-mist);
+  --text-accent:    var(--aj-gold);
+  --text-on-dark:   var(--aj-paper);
+  --text-on-dark-muted: #B6B0A2;
+
+  /* ---- Semantic aliases — lines & accent ---- */
+  --line-soft:    var(--aj-stone);
+  --line-on-dark: rgba(198, 167, 94, 0.35);
+  --accent:       var(--aj-gold);
+  --accent-hover: var(--aj-gold-deep);
+
+  /* ---- Status (used sparingly — formal brand) ---- */
+  --status-success: #4F6B4A;
+  --status-error:   #9B4A3E;
+}

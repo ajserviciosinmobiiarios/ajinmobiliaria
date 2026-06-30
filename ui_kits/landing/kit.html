@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kit del Vendedor · Aroa & Jon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black:     #0A0805;
+    --black-2:   #111009;
+    --paper:     #F5F0E8;
+    --gold:      #C6A75E;
+    --gold-dim:  rgba(198,167,94,0.15);
+    --gold-line: rgba(198,167,94,0.25);
+    --muted:     rgba(245,240,232,0.58);
+    --sans:      'Montserrat', sans-serif;
+    --serif:     'Playfair Display', serif;
+  }
+  html, body { background: var(--black); color: var(--paper); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+
+  /* ── Layout ── */
+  .page    { max-width: 760px; margin: 0 auto; padding: clamp(40px,7vw,80px) clamp(24px,5vw,48px) 80px; }
+  .section { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--gold-line); }
+
+  /* ── Logo bar ── */
+  .logo-bar { margin-bottom: 48px; padding-bottom: 28px; border-bottom: 1px solid rgba(198,167,94,0.2); }
+  .logo-bar img { height: 100px; width: auto; display: block; }
+
+  /* ── Welcome banner ── */
+  .welcome { background: var(--gold-dim); border: 1px solid var(--gold-line); padding: 24px 28px; display: flex; gap: 16px; align-items: flex-start; }
+  .welcome-icon { font-family: var(--serif); font-size: 22px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+  .welcome p { font-family: var(--sans); font-size: 14px; line-height: 1.65; color: var(--paper); }
+  .welcome strong { color: var(--gold); }
+
+  /* ── Section headers ── */
+  .eyebrow { font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  h2 { font-family: var(--serif); font-size: clamp(1.35rem,3.5vw,1.75rem); font-weight: 500; line-height: 1.15; color: var(--paper); margin-bottom: 12px; }
+  h2 em { font-style: italic; color: var(--gold); }
+  .section-intro { font-family: var(--sans); font-size: 14.5px; line-height: 1.7; color: var(--muted); margin-bottom: 28px; }
+
+  /* ── Video vertical 9:16 ── */
+  .video-outer { display: flex; justify-content: center; }
+  .video-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 9 / 16;
+    border: 1px solid var(--gold-line);
+    overflow: hidden;
+  }
+  .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+
+  /* ── Checklist ── */
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .checklist li {
+    display: flex; gap: 18px; align-items: flex-start;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(198,167,94,0.1);
+    font-size: 14.5px; line-height: 1.55; color: var(--paper);
+  }
+  .checklist li:first-child { border-top: 1px solid rgba(198,167,94,0.1); }
+  .check-num {
+    font-family: var(--serif); font-size: 13px; color: var(--gold);
+    flex-shrink: 0; width: 24px; text-align: right; margin-top: 1px;
+    opacity: 0.7;
+  }
+  .check-body { flex: 1; }
+  .check-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; color: var(--paper); }
+  .check-note  { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* ── Guía ── */
+  .guide-steps { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: grid; grid-template-columns: 32px 1fr; gap: 20px;
+    padding: 22px 0; border-bottom: 1px solid rgba(198,167,94,0.1);
+  }
+  .step:first-child { border-top: 1px solid rgba(198,167,94,0.1); }
+  .step-num { font-family: var(--serif); font-size: 28px; font-weight: 500; color: var(--gold); opacity: 0.35; line-height: 1; padding-top: 4px; }
+  .step-content h3 { font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--paper); margin-bottom: 8px; }
+  .step-content p  { font-family: var(--sans); font-size: 14px; line-height: 1.7; color: var(--muted); }
+  .step-content strong { color: var(--paper); }
+
+  /* ── Prompt block ── */
+  .prompt-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--gold-line);
+    padding: 28px 28px 24px;
+  }
+  .prompt-label { font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .prompt-text {
+    font-family: var(--sans); font-size: 14px; line-height: 1.75; color: var(--paper);
+    white-space: pre-wrap; user-select: all; word-break: break-word;
+  }
+  .copy-btn {
+    margin-top: 20px; display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold); color: var(--black); border: none;
+    font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 11px 22px; cursor: pointer; transition: opacity 0.2s;
+  }
+  .copy-btn:hover { opacity: 0.85; }
+  .copy-btn.copied { background: rgba(198,167,94,0.3); color: var(--gold); }
+
+  /* ── CTA final ── */
+  .cta-block {
+    margin-top: 64px; padding: 36px;
+    background: var(--gold-dim); border: 1px solid var(--gold-line);
+    text-align: center;
+  }
+  .cta-block p { font-family: var(--serif); font-size: 19px; font-weight: 500; color: var(--paper); margin-bottom: 20px; line-height: 1.4; }
+  .cta-btn {
+    display: inline-block; background: var(--gold); color: var(--black);
+    font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 15px 36px; text-decoration: none; transition: opacity 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.85; }
+
+  /* ── Footer ── */
+  .page-footer { margin-top: 56px; padding-top: 28px; border-top: 1px solid rgba(198,167,94,0.1); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .page-footer a   { font-family: var(--sans); font-size: 12px; color: var(--muted); text-decoration: none; }
+  .page-footer a:hover { color: var(--gold); }
+  .page-footer span { font-family: var(--sans); font-size: 12px; color: rgba(245,240,232,0.25); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Logo -->
+  <div class="logo-bar">
+    <a href="/"><img src="../../assets/logo-dorado-transparente.png" alt="Aroa & Jon · Servicios Inmobiliarios"></a>
+  </div>
+
+  <!-- Welcome -->
+  <div class="welcome">
+    <span class="welcome-icon">✓</span>
+    <p><strong>Aquí está tu kit.</strong> Tienes el vídeo, el checklist, la guía y el prompt — todo en esta página. Guárdala en favoritos para volver cuando lo necesites.</p>
+  </div>
+
+
+  <!-- ── 1. VÍDEO ── -->
+  <div class="section">
+    <p class="eyebrow">01 · Vídeo</p>
+    <h2>Consejos clave antes de <em>poner a la venta</em> tu inmueble</h2>
+    <p class="section-intro">Aroa y Jon te explican lo que hay que saber antes de dar el primer paso — sin rodeos.</p>
+    <div class="video-outer">
+      <div class="video-wrap">
+        <iframe src="https://player.vimeo.com/video/1205720286?badge=0&autopause=0&player_id=0&app_id=58479"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                title="Consejos para vender tu inmueble · Aroa & Jon"></iframe>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── 2. CHECKLIST ── -->
+  <div class="section">
+    <p class="eyebrow">02 · Checklist</p>
+    <h2>Los 7 documentos que necesitas <em>antes de vender</em></h2>
+    <p class="section-intro">Tenlos listos desde el principio. Retrasos de última hora en notaría casi siempre son por documentación incompleta.</p>
+
+    <ul class="checklist">
+      <li>
+        <span class="check-num">01</span>
+        <div class="check-body">
+          <div class="check-title">Escritura de propiedad</div>
+          <div class="check-note">El documento original de cuando compraste. Si no lo tienes, pide una copia autorizada a tu notaría o solicita una nota simple en el Registro de la Propiedad.</div>
+        </div>
+      </li>
+      <li>
+        <span class="check-num">02</span>
+        <div class="check-body">
+          <div class="check-title">Recibos del IBI (últimos 5 años)</div>
+          <div class="check-note">El Impuesto de Bienes Inmuebles. Solicítalos en el Ayuntamiento o en el área de gestión tributaria de tu municipio.</div>
+        </div>
+      </li>
+      <li>
+        <span class="check-num">03</span>
+        <div class="check-body">
+          <div class="check-title">Certificado de eficiencia energética</div>
+          <div class="check-note">Obligatorio por ley para vender. Lo emite un técnico certificado. Tiene validez de 10 años. Sin él no puedes anunciar el inmueble legalmente.</div>
+        </div>
+      </li>
+      <li>
+        <span class="check-num">04</span>
+        <div class="check-body">
+          <div class="check-title">Certificado de la comunidad de propietarios</div>
+          <div class="check-note">Acredita que estás al corriente en el pago de cuotas. Lo firma el administrador de fincas. Es imprescindible para firmar en notaría.</div>
+        </div>
+      </li>
+      <li>
+        <span class="check-num">05</span>
+        <div class="check-body">
+          <div class="check-title">Estatutos y últimas actas de la comunidad</div>
+          <div class="check-note">El comprador tiene derecho a conocer la normativa y los acuerdos recientes. Pídelos al administrador.</div>
+        </div>
+      </li>
+      <li>
+        <span class="check-num">06</span>
+        <div class="check-body">
+          <div class="check-title">Últimas facturas de suministros</div>
+          <div class="check-note">Luz, agua y gas. Sirven para acreditar que los contratos están activos y facilitan el cambio de titularidad al comprador.</div>
+        </div>
+      </li>
+      <li>
+        <span class="check-num">07</span>
+        <div class="check-body">
+          <div class="check-title">DNI/NIE en vigor de todos los propietarios</div>
+          <div class="check-note">Si hay varios titulares, todos deben tenerlo vigente en el momento de la firma. Compruébalo con antelación — renovarlo puede tardar semanas.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- ── 3. GUÍA ── -->
+  <div class="section">
+    <p class="eyebrow">03 · Guía</p>
+    <h2>Vender y comprar a la vez — el proceso que <em>nadie te explica</em></h2>
+    <p class="section-intro">El miedo más común: vender tu casa sin saber todavía a dónde vas. Aquí está el proceso real, paso a paso.</p>
+
+    <div class="guide-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Primero valora, antes de buscar nada</h3>
+          <p>Antes de mirar portales, necesitas saber cuánto puedes obtener por tu inmueble. Esa cifra determina tu presupuesto de compra. Sin ella estás tomando decisiones en el aire. <strong>Una valoración profesional es el primer paso, no el último.</strong></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Los dos procesos se pueden coordinar</h3>
+          <p>Mucha gente cree que tiene que vender antes de poder comprar. No necesariamente. Con una buena gestión, puedes firmar el contrato de arras de tu venta y el de tu compra con plazos solapados. <strong>La clave está en negociar los tiempos desde el principio.</strong></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>El contrato de arras: tu margen de tiempo</h3>
+          <p>El plazo entre arras y notaría suele ser de 1 a 3 meses. Ese es tu margen para cerrar también tu compra. Negocia ese plazo conscientemente — no lo aceptes sin pensar. <strong>Un mes puede ser poco. Dos meses suele ser manejable.</strong></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>¿Y si los tiempos no cuadran exactamente?</h3>
+          <p>Existen opciones: alquiler temporal mientras buscas, pactar con el vendedor de tu nueva casa un plazo de entrega posterior, o incluso un préstamo puente bancario para comprar antes de cobrar tu venta. <strong>Siempre hay solución — lo que no hay que hacer es improvisar.</strong></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Un solo interlocutor lo cambia todo</h3>
+          <p>Tener a alguien que gestiona los dos procesos a la vez — tu venta y tu compra — es la única manera de que los tiempos cuadren de verdad. <strong>Eso es exactamente lo que hacemos nosotros.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── 4. PROMPT ── -->
+  <div class="section">
+    <p class="eyebrow">04 · Prompt de IA</p>
+    <h2>Copia este prompt y úsalo con <em>ChatGPT o Claude</em></h2>
+    <p class="section-intro">Personaliza los corchetes con tu situación real. En menos de 5 minutos tendrás un plan de acción concreto para tu venta.</p>
+
+    <div class="prompt-box">
+      <p class="prompt-label">
+        <span>Prompt listo para copiar</span>
+      </p>
+      <pre class="prompt-text" id="prompt-content">Actúa como un asesor inmobiliario experto en el mercado de Gipuzkoa, cercano y directo, sin rodeos.
+
+Quiero vender mi inmueble y necesito ayuda para preparar mi estrategia. Aquí está mi situación:
+
+- Tipo de inmueble: [piso / casa / local / otro]
+- Ubicación: [ciudad o barrio en Gipuzkoa]
+- Superficie aproximada: [m²]
+- Año de construcción o reforma: [año]
+- Situación actual: [ocupado por mí / alquilado / vacío]
+- Motivo de la venta: [cambio de vivienda / herencia / inversión / otro]
+- ¿Necesito comprar otra vivienda a la vez? [sí / no]
+- Precio al que creo que puedo vender: [€ o "no lo sé"]
+- Mayor preocupación: [quedarse sin casa / precio / tiempo / otro]
+
+Con esta información, respóndeme:
+1. ¿Qué pasos concretos debería dar en los próximos 30 días?
+2. ¿Qué errores cometen los propietarios en mi situación que debería evitar?
+3. ¿Qué preguntas debería hacerle a una inmobiliaria antes de firmar con ella?
+4. ¿Cómo puedo estimar si el precio que tengo en mente es realista?
+
+Sé específico, práctico y honesto. Si algo no lo puedo saber sin más información, dímelo.</pre>
+      <button class="copy-btn" id="copy-btn" onclick="copyPrompt()">Copiar prompt</button>
+    </div>
+  </div>
+
+
+  <!-- CTA final -->
+  <div class="cta-block">
+    <p>¿Tienes dudas sobre tu caso concreto?<br>Una llamada de 15 minutos lo aclara todo.</p>
+    <a href="/" class="cta-btn">Contactar con Aroa y Jon →</a>
+  </div>
+
+
+  <footer class="page-footer">
+    <a href="/">← Volver a la web</a>
+    <span>© 2026 · Aroa & Jon Servicios Inmobiliarios · Gipuzkoa</span>
+  </footer>
+
+</div>
+
+<script>
+function copyPrompt() {
+  var text = document.getElementById('prompt-content').innerText;
+  var btn  = document.getElementById('copy-btn');
+  navigator.clipboard.writeText(text).then(function(){
+    btn.textContent = '✓ Copiado';
+    btn.classList.add('copied');
+    setTimeout(function(){ btn.textContent = 'Copiar prompt'; btn.classList.remove('copied'); }, 2200);
+  }).catch(function(){
+    /* fallback */
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.textContent = '✓ Copiado'; btn.classList.add('copied');
+    setTimeout(function(){ btn.textContent = 'Copiar prompt'; btn.classList.remove('copied'); }, 2200);
+  });
+}
+</script>
+</body>
+</html>

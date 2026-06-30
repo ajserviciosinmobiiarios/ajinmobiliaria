@@ -1,0 +1,29 @@
+/* ====================================================================
+   SPACING & LAYOUT — 8px base grid, generous editorial rhythm
+   ==================================================================== */
+:root {
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  24px;
+  --sp-6:  32px;
+  --sp-7:  48px;
+  --sp-8:  64px;
+  --sp-9:  96px;
+  --sp-10: 128px;
+  --sp-11: 160px;
+
+  /* Section vertical rhythm */
+  --section-y:        128px;
+  --section-y-mobile: 80px;
+
+  /* Container */
+  --container-max: 1240px;
+  --container-pad: 24px;
+
+  /* Radius — brand uses sharp, squared geometry. Minimal rounding only. */
+  --radius-none: 0px;
+  --radius-sm:   2px;
+  --radius-pill: 999px;
+}

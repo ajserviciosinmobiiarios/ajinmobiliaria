@@ -1,0 +1,24 @@
+# Vercel
+.vercel
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Archivos temporales de desarrollo
+serve.py
+serve.json
+
+# Carpeta de subidas de trabajo
+uploads/
+
+# Screenshots de desarrollo
+screenshots/
+
+# Carpetas originales de assets sin procesar (solo van los archivos renombrados)
+assets/FORU KALEA HONDARRIBIA/
+assets/GAZTAIONDO IRUN/
+assets/HIGER GOLF/
+assets/RESEÑAS GOOGLE/
+assets/VILLA BIRDIE - DONOSTI/
+assets/opt/

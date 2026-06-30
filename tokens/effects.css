@@ -1,0 +1,26 @@
+/* ====================================================================
+   EFFECTS — shadows, transitions, borders
+   Restrained, editorial. Shadows are soft and warm-tinted, never heavy.
+   ==================================================================== */
+:root {
+  /* ---- Shadows ---- */
+  --shadow-xs:   0 1px 2px rgba(21, 20, 15, 0.05);
+  --shadow-card: 0 2px 8px rgba(21, 20, 15, 0.06), 0 12px 32px -12px rgba(21, 20, 15, 0.10);
+  --shadow-lift: 0 8px 24px -8px rgba(21, 20, 15, 0.18);
+  --shadow-gold: 0 8px 28px -10px rgba(168, 136, 74, 0.45);
+
+  /* ---- Borders ---- */
+  --border-hairline: 1px solid var(--line-soft);
+  --border-gold:     1px solid var(--aj-gold);
+
+  /* ---- Transitions ---- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --t-fast:   0.15s var(--ease-standard);
+  --t-base:   0.25s var(--ease-standard);
+  --t-slow:   0.5s var(--ease-out);
+
+  /* ---- Overlay / scrims for image text protection ---- */
+  --scrim-bottom: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0) 75%); /* @kind other */
+  --scrim-full:   linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.25) 100%); /* @kind other */
+}
