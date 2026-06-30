@@ -56,7 +56,7 @@ function Header() {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      padding: isMobile ? "18px 24px" : "24px clamp(24px, 5vw, 72px)",
+      padding: isMobile ? "10px 24px" : "12px clamp(24px, 5vw, 72px)",
       background: open ? "rgba(10,10,10,0.98)" : "rgba(10,10,10,0.72)",
       backdropFilter: "blur(12px)",
       WebkitBackdropFilter: "blur(12px)",

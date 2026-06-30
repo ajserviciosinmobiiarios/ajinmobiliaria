@@ -259,8 +259,8 @@ function PersonalShopper() {
 
   return (
     <section ref={sectionRef} id="personal-shopper" style={{ position: "relative", overflow: "hidden", padding: "var(--section-y) clamp(24px, 5vw, 72px)" }}>
-      <div ref={bgRef} style={{ position: "absolute", inset: "-35%", zIndex: 0, backgroundImage: "url(../../assets/fondo-parallax.jpg)", backgroundSize: "cover", backgroundPosition: "center", filter: "brightness(0.22) saturate(0.7)", willChange: "transform" }} />
-      <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(135deg, rgba(10,8,5,0.6) 0%, rgba(30,20,5,0.4) 100%)" }} />
+      <div ref={bgRef} style={{ position: "absolute", inset: "-35%", zIndex: 0, backgroundImage: "url(../../assets/fondo-parallax.jpg)", backgroundSize: "cover", backgroundPosition: "center", filter: "brightness(0.32) saturate(0.7)", willChange: "transform" }} />
+      <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(135deg, rgba(10,8,5,0.45) 0%, rgba(30,20,5,0.28) 100%)" }} />
       <div style={{ position: "relative", zIndex: 2, maxWidth: 1240, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 40 : 72, alignItems: "center" }}>
         <div style={{ position: "relative", order: isMobile ? 2 : 1 }}>
           <img src="../../assets/aroa-jon-irun.jpg" alt="Aroa y Jon en Irun" style={{ width: "100%", height: isMobile ? 300 : 520, objectFit: "cover", objectPosition: "center", display: "block" }} />

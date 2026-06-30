@@ -44,6 +44,14 @@ function BrandPromise() {
     <section id="nosotros" style={{ background: "var(--surface-canvas)", color: "var(--text-heading)", padding: "clamp(48px, 6vw, 72px) clamp(24px, 5vw, 72px)" }}>
       <div style={{ maxWidth: 1240, margin: "0 auto" }}>
 
+        {/* Foto: en móvil va antes del bloque ¿Te suena? */}
+        {isMobile ? (
+          <div style={{ position: "relative", overflow: "hidden", marginBottom: 36 }}>
+            <div style={{ position: "absolute", inset: 10, border: "1px solid rgba(198,167,94,0.3)", pointerEvents: "none", zIndex: 1 }} />
+            <img src="../../assets/aroa-jon-street.jpg" alt="Aroa y Jon" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center", display: "block" }} />
+          </div>
+        ) : null}
+
         {/* BLOQUE 1: ¿Te suena? + dolores */}
         <div style={{ marginBottom: isMobile ? 48 : 64 }}>
           <span style={sectionLabel}>¿Te suena?</span>
@@ -56,7 +64,7 @@ function BrandPromise() {
               );
             })}
           </div>
-          <p style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(0.95rem, 1.8vw, 1.1rem)", fontStyle: "italic", color: "rgba(10,8,5,0.5)", marginTop: 32, marginBottom: 0 }}>
+          <p style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(0.95rem, 1.8vw, 1.1rem)", fontStyle: "italic", color: "var(--aj-black)", marginTop: 32, marginBottom: 0 }}>
             Si coincides con alguna de estas situaciones, sigue leyendo.
           </p>
         </div>
@@ -76,10 +84,12 @@ function BrandPromise() {
               Cuando cogemos tu inmueble tenemos dos objetivos: que no tengas que preocuparte por nada y que, cuando llegues a notaría, hayas sacado el mejor precio posible. No te prometemos magia. Te prometemos trabajo y método.
             </p>
           </div>
-          <div style={{ position: "relative", overflow: "hidden" }}>
-            <div style={{ position: "absolute", inset: 10, border: "1px solid rgba(198,167,94,0.3)", pointerEvents: "none", zIndex: 1 }} />
-            <img src="../../assets/aroa-jon-street.jpg" alt="Aroa y Jon" style={{ width: "100%", height: isMobile ? 280 : 440, objectFit: "cover", objectPosition: "center", display: "block" }} />
-          </div>
+          {isMobile ? null : (
+            <div style={{ position: "relative", overflow: "hidden" }}>
+              <div style={{ position: "absolute", inset: 10, border: "1px solid rgba(198,167,94,0.3)", pointerEvents: "none", zIndex: 1 }} />
+              <img src="../../assets/aroa-jon-street.jpg" alt="Aroa y Jon" style={{ width: "100%", height: 440, objectFit: "cover", objectPosition: "center", display: "block" }} />
+            </div>
+          )}
         </div>
 
         {/* BLOQUE 3: pilares con números grandes */}
