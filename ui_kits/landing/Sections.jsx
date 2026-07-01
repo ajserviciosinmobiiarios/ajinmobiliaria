@@ -477,7 +477,7 @@ function ContactForm() {
     if (!email) return;
     setLoading(true);
     setError(null);
-    fetch("https://api.convertkit.com/v3/forms/9625324/subscribe", {
+    fetch("https://api.convertkit.com/v3/forms/9633762/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -517,6 +517,12 @@ function ContactForm() {
       <DarkField label="Email" name="email" type="email" required />
       <DarkField label="¿Qué necesitas?" name="reason" fieldAs="select" options={["Quiero vender mi propiedad", "Información sobre Personal Shopper", "Valoración gratuita de mi inmueble"]} />
       <DarkField label="Cuéntanos algo más (opcional)" name="mensaje" fieldAs="textarea" rows={3} />
+      <label style={{ display: "flex", alignItems: "flex-start", gap: 12, cursor: "pointer" }}>
+        <input type="checkbox" name="privacidad" required style={{ marginTop: 3, accentColor: "var(--aj-gold)", width: 16, height: 16, flexShrink: 0 }} />
+        <span style={{ fontFamily: "var(--font-sans)", fontSize: 12, lineHeight: 1.6, color: "rgba(245,240,232,0.55)" }}>
+          He leído y acepto la <a href="/politica-de-privacidad" target="_blank" style={{ color: "var(--aj-gold)", textDecoration: "underline" }}>Política de Privacidad</a>. Consiento el tratamiento de mis datos para recibir información sobre los servicios de Aroa & Jon Servicios Inmobiliarios.
+        </span>
+      </label>
       {error && <div style={{ fontFamily: "var(--font-sans)", fontSize: 13, color: "var(--aj-gold)" }}>{error}</div>}
       <Button variant="primary" size="lg" fullWidth as="button" disabled={loading}>
         {loading ? "Enviando..." : "Enviar"}
