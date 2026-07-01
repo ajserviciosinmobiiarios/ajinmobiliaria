@@ -460,6 +460,45 @@ function ContactForm() {
   var sentState = React.useState(false);
   var sent = sentState[0];
   var setSent = sentState[1];
+  var loadingState = React.useState(false);
+  var loading = loadingState[0];
+  var setLoading = loadingState[1];
+  var errorState = React.useState(null);
+  var error = errorState[0];
+  var setError = errorState[1];
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    var fd = new FormData(e.target);
+    var nombre = fd.get("nombre") || "";
+    var email = fd.get("email") || "";
+    var telefono = fd.get("telefono") || "";
+    var reason = fd.get("reason") || "";
+    if (!email) return;
+    setLoading(true);
+    setError(null);
+    fetch("https://api.convertkit.com/v3/forms/9625324/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        api_key: "sIwxIVz8VzunIvELlu4jBA",
+        first_name: nombre,
+        email: email,
+        fields: { phone: telefono, reason: reason }
+      })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      setLoading(false);
+      if (data.subscription || data.subscriber) { setSent(true); }
+      else { setError("Ha habido un problema. Inténtalo de nuevo."); }
+    })
+    .catch(function() {
+      setLoading(false);
+      setError("Ha habido un problema. Inténtalo de nuevo.");
+    });
+  }
+
   if (sent) {
     return (
       <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(198,167,94,0.3)", padding: 48, display: "flex", flexDirection: "column", justifyContent: "center", minHeight: 420 }}>
@@ -470,15 +509,18 @@ function ContactForm() {
   }
   return (
     <form style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(198,167,94,0.22)", padding: 40, display: "flex", flexDirection: "column", gap: 20 }}
-          onSubmit={function(e) { e.preventDefault(); setSent(true); }}>
+          onSubmit={handleSubmit}>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
-        <DarkField label="Nombre" />
-        <DarkField label="Teléfono" />
+        <DarkField label="Nombre" name="nombre" />
+        <DarkField label="Teléfono" name="telefono" />
       </div>
-      <DarkField label="Email" />
-      <DarkField label="¿Qué necesitas?" fieldAs="select" options={["Quiero vender mi propiedad", "Información sobre Personal Shopper", "Valoración gratuita de mi inmueble", "Otra consulta"]} />
-      <DarkField label="Cuéntanos algo más (opcional)" fieldAs="textarea" rows={3} />
-      <Button variant="primary" size="lg" fullWidth as="button">Enviar</Button>
+      <DarkField label="Email" name="email" type="email" required />
+      <DarkField label="¿Qué necesitas?" name="reason" fieldAs="select" options={["Quiero vender mi propiedad", "Información sobre Personal Shopper", "Valoración gratuita de mi inmueble"]} />
+      <DarkField label="Cuéntanos algo más (opcional)" name="mensaje" fieldAs="textarea" rows={3} />
+      {error && <div style={{ fontFamily: "var(--font-sans)", fontSize: 13, color: "var(--aj-gold)" }}>{error}</div>}
+      <Button variant="primary" size="lg" fullWidth as="button" disabled={loading}>
+        {loading ? "Enviando..." : "Enviar"}
+      </Button>
     </form>
   );
 }
@@ -493,13 +535,13 @@ function DarkField(props) {
     <label style={{ display: "block" }}>
       <span style={{ display: "block", fontFamily: "var(--font-sans)", fontSize: 11, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(198,167,94,0.7)", marginBottom: 9 }}>{props.label}</span>
       {fieldAs === "textarea" ? (
-        <textarea rows={props.rows || 4} style={Object.assign({}, ctrl, { resize: "vertical" })} onFocus={function() { setF(true); }} onBlur={function() { setF(false); }} />
+        <textarea name={props.name} rows={props.rows || 4} style={Object.assign({}, ctrl, { resize: "vertical" })} onFocus={function() { setF(true); }} onBlur={function() { setF(false); }} />
       ) : fieldAs === "select" ? (
-        <select style={ctrl} onFocus={function() { setF(true); }} onBlur={function() { setF(false); }}>
+        <select name={props.name} style={ctrl} onFocus={function() { setF(true); }} onBlur={function() { setF(false); }}>
           {(props.options || []).map(function(o) { return <option key={o}>{o}</option>; })}
         </select>
       ) : (
-        <input style={ctrl} onFocus={function() { setF(true); }} onBlur={function() { setF(false); }} />
+        <input name={props.name} type={props.type || "text"} required={props.required} style={ctrl} onFocus={function() { setF(true); }} onBlur={function() { setF(false); }} />
       )}
     </label>
   );

@@ -31,9 +31,9 @@ function Header() {
   const isMobile = useIsMobile();
   const [open, setOpen] = React.useState(false);
   const items = [
-    ["Servicios", "#servicios"],
-    ["Nosotros", "#nosotros"],
-    ["Reseñas", "#resenas"],
+    ["Inicio", "#inicio"],
+    ["Quiénes somos", "#nosotros"],
+    ["Inmuebles", "#cartera"],
     ["Personal Shopper", "#personal-shopper"],
   ];
 
@@ -80,7 +80,7 @@ function Header() {
 
       {/* Desktop CTA */}
       {!isMobile && (
-        <Button variant="primary" size="sm">Quiero que me llamen</Button>
+        <Button variant="primary" size="sm" onClick={function() { window.open("https://wa.me/34637338903", "_blank"); }}>Quiero que me llamen</Button>
       )}
 
       {/* Mobile hamburger */}
@@ -112,7 +112,7 @@ function Header() {
             </a>
           ))}
           <div style={{ marginTop: 24 }}>
-            <Button variant="primary" size="sm">Quiero que me llamen</Button>
+            <Button variant="primary" size="sm" onClick={function() { window.open("https://wa.me/34637338903", "_blank"); }}>Quiero que me llamen</Button>
           </div>
         </div>
       )}
@@ -179,7 +179,7 @@ function Hero() {
   const isMobile = useIsMobile();
 
   return (
-    <section style={{ position: "relative", background: "var(--aj-black)", color: "var(--text-on-dark)", overflow: "hidden", minHeight: isMobile ? "100svh" : 760 }}>
+    <section id="inicio" style={{ position: "relative", background: "var(--aj-black)", color: "var(--text-on-dark)", overflow: "hidden", minHeight: isMobile ? "100svh" : 760 }}>
       <VideoCarousel />
 
       {/* scrims */}
@@ -198,7 +198,7 @@ function Hero() {
             Somos Aroa y Jon y hemos acompañado a propietarios a gestionar más de 25 millones de euros en patrimonio. Casi una década vendiendo en Gipuzkoa con estrategia a medida y comunicación constante.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginTop: 38 }}>
-            <Button variant="primary" size={isMobile ? "md" : "lg"}>Quiero que me llamen</Button>
+            <Button variant="primary" size={isMobile ? "md" : "lg"} onClick={function() { window.open("https://wa.me/34637338903", "_blank"); }}>Quiero que me llamen</Button>
           </div>
           <div style={{ display: "flex", gap: isMobile ? 32 : 64, marginTop: 48, paddingTop: 32, borderTop: "1px solid rgba(198,167,94,0.25)", maxWidth: 540 }}>
             <Stat value="+25M€" label="Patrimonio gestionado" tone="onDark" />
