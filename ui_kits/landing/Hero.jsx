@@ -31,7 +31,6 @@ function Header() {
   const isMobile = useIsMobile();
   const [open, setOpen] = React.useState(false);
   const items = [
-    ["Inicio", "#inicio"],
     ["Quiénes somos", "#nosotros"],
     ["Inmuebles", "#cartera"],
     ["Personal Shopper", "#personal-shopper"],

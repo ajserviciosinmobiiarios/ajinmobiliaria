@@ -283,7 +283,7 @@ function PersonalShopper() {
               );
             })}
           </ul>
-          <Button variant="primary" size="lg">Quiero más información</Button>
+          <Button variant="primary" size="lg" onClick={function() { document.getElementById("contacto").scrollIntoView({ behavior: "smooth" }); }}>Quiero más información</Button>
         </div>
       </div>
     </section>
