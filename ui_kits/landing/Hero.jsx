@@ -182,7 +182,7 @@ function Hero() {
       <VideoCarousel />
 
       {/* scrims */}
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(100deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 42%, rgba(0,0,0,0.28) 72%, rgba(0,0,0,0.38) 100%)", zIndex: 1, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(100deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 42%, rgba(0,0,0,0.15) 72%, rgba(0,0,0,0.22) 100%)", zIndex: 1, pointerEvents: "none" }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 35%)", zIndex: 1, pointerEvents: "none" }} />
       {/* gold frame */}
       <div style={{ position: "absolute", inset: "20px", border: "1px solid rgba(198,167,94,0.18)", pointerEvents: "none", zIndex: 2 }} />

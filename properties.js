@@ -1,6 +1,6 @@
 /* Aroa & Jon — Cartera de inmuebles · Fuente única de datos
-   Para añadir/editar una propiedad, modifica este array.
-   La landing y la página /cartera se actualizan solas. */
+   Para añadir/editar una propiedad destacada en la home, modifica este array.
+   La cartera completa vive en el CRM: inmuebles.ajinmobiliaria.com */
 
 window.AJ_PROPERTIES = [
   {

@@ -1,9 +1,22 @@
 {
+  "redirects": [
+    { "source": "/ui_kits/landing/index.html", "destination": "/", "permanent": true },
+    { "source": "/ui_kits/landing/lead-magnet.html", "destination": "/lead-magnet", "permanent": true },
+    { "source": "/ui_kits/landing/kit.html", "destination": "/kit", "permanent": true },
+    { "source": "/ui_kits/landing/confirma.html", "destination": "/confirma", "permanent": true },
+    { "source": "/cartera", "destination": "https://www.inmuebles.ajinmobiliaria.com/results/?id_tipo_operacion=1", "permanent": true },
+    { "source": "/ui_kits/landing/cartera.html", "destination": "https://www.inmuebles.ajinmobiliaria.com/results/?id_tipo_operacion=1", "permanent": true },
+    { "source": "/ui_kits/landing/politica-de-privacidad.html", "destination": "/politica-de-privacidad", "permanent": true },
+    { "source": "/ui_kits/landing/aviso-legal.html", "destination": "/aviso-legal", "permanent": true },
+    { "source": "/ui_kits/landing/politica-de-cookies.html", "destination": "/politica-de-cookies", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/", "destination": "/ui_kits/landing/index.html" },
     { "source": "/lead-magnet", "destination": "/ui_kits/landing/lead-magnet.html" },
     { "source": "/kit", "destination": "/ui_kits/landing/kit.html" },
     { "source": "/confirma", "destination": "/ui_kits/landing/confirma.html" },
-    { "source": "/cartera", "destination": "/ui_kits/landing/cartera.html" }
+    { "source": "/politica-de-privacidad", "destination": "/ui_kits/landing/politica-de-privacidad.html" },
+    { "source": "/aviso-legal", "destination": "/ui_kits/landing/aviso-legal.html" },
+    { "source": "/politica-de-cookies", "destination": "/ui_kits/landing/politica-de-cookies.html" }
   ]
 }

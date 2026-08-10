@@ -89,11 +89,11 @@ function EnCartera() {
         <div style={{ display: "flex", alignItems: isMobile ? "flex-start" : "flex-end", justifyContent: "space-between", flexDirection: isMobile ? "column" : "row", gap: 20, marginBottom: 52 }}>
           <div style={{ maxWidth: 560 }}>
             <Eyebrow>Inmuebles en exclusiva</Eyebrow>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "var(--fs-h2)", fontWeight: 500, lineHeight: 1.12, margin: "22px 0 0", color: "var(--text-heading)" }}>
-              En <span style={{ fontStyle: "italic", color: "var(--aj-gold)" }}>cartera</span>.
+            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 500, lineHeight: 1.12, margin: "22px 0 0", color: "var(--text-heading)" }}>
+              Algunos de los inmuebles en <span style={{ fontStyle: "italic", color: "var(--aj-gold)" }}>cartera</span>.
             </h2>
           </div>
-          <a href="/cartera" style={{ fontFamily: "var(--font-sans)", fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--aj-gold)", textDecoration: "none", whiteSpace: "nowrap", opacity: 0.85 }}>Ver todos →</a>
+          <a href="https://www.inmuebles.ajinmobiliaria.com/results/?id_tipo_operacion=1" style={{ fontFamily: "var(--font-sans)", fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--aj-gold)", textDecoration: "none", whiteSpace: "nowrap", opacity: 0.85 }}>Ver todos →</a>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fill, minmax(270px, 1fr))", gap: isMobile ? 28 : 32, alignItems: "stretch" }}>
           {listings.map(function(p) {
@@ -108,12 +108,16 @@ function EnCartera() {
 /* ── RESEÑAS MARQUEE INFINITO ────────────────────────────────── */
 
 var REVIEWS_DATA = [
+  { name: "Iñaki Zamarreño", text: "Jon y Aroa han conseguido proporcionarnos esa tranquilidad que siente uno cuando sabe que está en buenas manos. Maravillosos, cercanos, muy profesionales… no son una inmobiliaria, son la inmobiliaria." },
+  { name: "Aloña Aramburu", text: "Muchas gracias Jon y Aroa por vuestro excelente trabajo. Estamos muy contentos por todo lo que habéis hecho por nosotros. Sois muy profesionales y eficaces en vuestro trabajo." },
   { name: "Iker Aranburu", text: "Vendimos la casa antes de publicarla en ningún portal inmobiliario y todo gracias al buen hacer de Jon y Aroa. Profesionalidad, claridad y fluidez informativa. Os recomendaremos sin ninguna duda." },
-  { name: "Rafa Munduate", text: "¡Qué equipazo! Ha sido un trabajo duro y con mucho esfuerzo por ambas partes. Comunicación, empatía, eficacia… y podría seguir añadiendo." },
+  { name: "Iñi Sanchez", text: "Un placer trabajar con Jon y Aroa. Unos auténticos profesionales del sector. 100% recomendables. Muchas gracias por el servicio." },
   { name: "Ricardo Irazoki", text: "Jon y Aroa marcan la diferencia con el resto de las inmobiliarias convencionales. Un gran marketing acompañado de una excelente gestión y asesoramiento. Así da gusto." },
-  { name: "Silvia Bailador", text: "Mi experiencia fue fantástica. Desde el primer momento conectamos y supieron entender lo que necesitábamos. Sin dudarlo, siempre." },
-  { name: "Maite Odriozola", text: "Desde el primer momento me sentí en buenas manos. Transparencia total, proceso sin estrés y resultado por encima de lo esperado. Totalmente recomendables." },
-  { name: "Joseba Kortabarria", text: "Profesionales de verdad. Sabían exactamente cómo posicionar el inmueble y los resultados lo demostraron. Cerrado en tiempo récord y al precio que queríamos." },
+  { name: "Rafa Munduate", text: "¡Qué equipazo! Ha sido un trabajo duro y con mucho esfuerzo por ambas partes. Comunicación, empatía, eficacia… y podría seguir añadiendo." },
+  { name: "C A", text: "Tuvimos una experiencia excelente con Jon y Aroa. Nos acompañaron con cercanía y profesionalidad, resolvieron todas nuestras dudas y conseguimos vender en menos tiempo del que esperábamos." },
+  { name: "Gema", text: "Quiero agradecer enormemente a Aroa y Jon por su profesionalidad y amabilidad. Su atención fue impecable, siempre dispuestos a ayudar y resolver cualquier duda con gran eficacia. Un servicio de 10." },
+  { name: "Silvia Bailador", text: "Mi experiencia ha sido fantástica con Aroa. Desde que nos conocimos, supo entender nuestras necesidades y las características del inmueble. Recurriría a ella sin dudarlo, siempre." },
+  { name: "Juja", text: "Una muy buena opción si quieres vender tu vivienda. La experiencia en la venta de nuestra vivienda fue muy positiva, rápida y sin problemas gracias a la profesionalidad y buen hacer de Aroa y Jon." },
 ];
 
 function StarRow() {
@@ -169,56 +173,131 @@ function Reviews() {
 
 /* ── TESTIMONIOS EN VÍDEO (3 centrados) ─────────────────────── */
 
-var VIDEO_TESTIMONIALS = [
-  { name: "Cliente 1", location: "Irun", duration: "1:24" },
-  { name: "Cliente 2", location: "Hondarribia", duration: "2:08" },
-  { name: "Cliente 3", location: "San Sebastián", duration: "1:47" },
-  { name: "Cliente 4", location: "Donostia", duration: "0:58" },
-];
-var VIDEO_DOUBLED = VIDEO_TESTIMONIALS.concat(VIDEO_TESTIMONIALS);
+// Placeholder que sustituye al reproductor de Vimeo mientras no haya
+// consentimiento de marketing. "Cargar vídeo" es consentimiento explícito.
+function VideoConsentBlock() {
+  function accept() {
+    if (window.ajConsent) window.ajConsent.grantMarketing();
+  }
+  return (
+    <div className="ajc-vblock">
+      <p>Este testimonio está alojado en Vimeo, que instala cookies propias al reproducirlo.</p>
+      <button type="button" className="ajc-vbtn" onClick={accept}>Cargar vídeo</button>
+      <button type="button" className="ajc-vlink"
+        onClick={function () { if (window.ajConsent) window.ajConsent.open(); }}>
+        Configurar cookies
+      </button>
+    </div>
+  );
+}
 
 function VideoReviews() {
   var Eyebrow = window.AroaJonDesignSystem_6ad0b0.Eyebrow;
+  var isMobile = useIsMobileLocal();
+  var PORCELANAS_ID = "1206741060";
+  var VARIOS_ID = "1206741059";
+  var sectionRef = React.useRef(null);
+
+  // Vimeo instala cookies de terceros: no se carga sin consentimiento de marketing.
+  var consentApi = window.ajConsent;
+  var initialConsent = consentApi ? consentApi.get().marketing : false;
+  var allowed = React.useState(initialConsent);
+  var videoAllowed = allowed[0], setVideoAllowed = allowed[1];
+
+  React.useEffect(function() {
+    function onChange(e) { setVideoAllowed(!!(e.detail && e.detail.marketing)); }
+    document.addEventListener("aj-consent-change", onChange);
+    return function() { document.removeEventListener("aj-consent-change", onChange); };
+  }, []);
+
+  React.useEffect(function() {
+    if (!videoAllowed) return;
+    var script = document.createElement("script");
+    script.src = "https://player.vimeo.com/api/player.js";
+    script.onload = function() {
+      var p1 = new window.Vimeo.Player(document.getElementById("vimeo-porcelanas"));
+      var p2 = new window.Vimeo.Player(document.getElementById("vimeo-varios"));
+
+      p1.on("ended", function() { p2.play(); });
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            p1.play();
+          } else {
+            p1.pause();
+            p2.pause();
+          }
+        });
+      }, { threshold: 0.3 });
+
+      if (sectionRef.current) observer.observe(sectionRef.current);
+    };
+    document.head.appendChild(script);
+  }, [videoAllowed]);
+
+  var cardStyle = {
+    flex: isMobile ? "none" : "1 1 0",
+    width: isMobile ? "min(340px, 100%)" : undefined,
+    alignSelf: isMobile ? "center" : undefined,
+    border: "1px solid rgba(198,167,94,0.35)",
+    overflow: "hidden",
+    background: "#0d0d0d",
+    position: "relative",
+    aspectRatio: "9/16",
+  };
+
+  var iframeStyle = {
+    width: "100%",
+    height: "100%",
+    display: "block",
+    border: "none",
+  };
+
+  var frameStyle = {
+    position: "absolute",
+    inset: 12,
+    border: "1px solid rgba(198,167,94,0.3)",
+    pointerEvents: "none",
+    zIndex: 2,
+  };
+
   return (
-    <section style={{ background: "var(--aj-black)", padding: "0 0 var(--section-y)" }}>
+    <section ref={sectionRef} style={{ background: "var(--aj-black)", padding: "0 0 var(--section-y)" }}>
       <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 clamp(24px, 5vw, 72px)", marginBottom: 48 }}>
         <Eyebrow tone="onDark">Testimonios en vídeo</Eyebrow>
         <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "var(--fs-h2)", fontWeight: 500, lineHeight: 1.12, margin: "22px 0 0", color: "var(--aj-paper)" }}>
           Sus palabras, no las <span style={{ fontStyle: "italic", color: "var(--aj-gold)" }}>nuestras</span>.
         </h2>
       </div>
-      <div style={{ overflow: "hidden", width: "100%" }}>
-        <div
-          style={{ display: "flex", gap: 20, width: "max-content", animation: "ajMarquee 28s linear infinite" }}
-          onMouseEnter={function(e) { e.currentTarget.style.animationPlayState = "paused"; }}
-          onMouseLeave={function(e) { e.currentTarget.style.animationPlayState = "running"; }}
-        >
-          {VIDEO_DOUBLED.map(function(t, i) {
-            return (
-              <div key={i} style={{ flexShrink: 0, width: 300, border: "1px solid rgba(198,167,94,0.2)", overflow: "hidden", cursor: "pointer" }}>
-                <div style={{ position: "relative", paddingBottom: "56.25%", background: "linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%)" }}>
-                  <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(198,167,94,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(198,167,94,0.04) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
-                  <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
-                    <svg width="48" height="48" viewBox="0 0 52 52" fill="none">
-                      <circle cx="26" cy="26" r="25.5" stroke="rgba(198,167,94,0.8)" strokeWidth="1"/>
-                      <path d="M21 17.5L37 26L21 34.5V17.5Z" fill="var(--aj-gold)"/>
-                    </svg>
-                  </div>
-                  <div style={{ position: "absolute", bottom: 12, right: 12, background: "rgba(0,0,0,0.7)", color: "var(--aj-gold)", fontFamily: "var(--font-sans)", fontSize: 11, padding: "3px 8px", border: "1px solid rgba(198,167,94,0.3)" }}>{t.duration}</div>
-                </div>
-                <div style={{ padding: "16px 18px", borderTop: "1px solid rgba(198,167,94,0.12)" }}>
-                  <div style={{ fontFamily: "var(--font-serif)", fontSize: 16, color: "var(--aj-paper)", marginBottom: 4 }}>{t.name}</div>
-                  <div style={{ fontFamily: "var(--font-sans)", fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(198,167,94,0.7)" }}>{t.location}</div>
-                </div>
-              </div>
-            );
-          })}
+      <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 clamp(24px, 5vw, 72px)", display: "flex", flexDirection: isMobile ? "column" : "row", gap: 24 }}>
+        <div style={cardStyle}>
+          <div style={frameStyle} />
+          {videoAllowed ? (
+            <iframe
+              id="vimeo-porcelanas"
+              src={"https://player.vimeo.com/video/" + PORCELANAS_ID + "?badge=0&autopause=0&muted=1&player_id=vimeo-porcelanas&app_id=58479"}
+              allow="autoplay; fullscreen; picture-in-picture"
+              style={iframeStyle}
+              title="Testimonio Porcelanas"
+            />
+          ) : (
+            <VideoConsentBlock />
+          )}
         </div>
-      </div>
-      <div style={{ maxWidth: 1240, margin: "32px auto 0", padding: "0 clamp(24px, 5vw, 72px)" }}>
-        <div style={{ padding: "16px 20px", border: "1px dashed rgba(198,167,94,0.3)", display: "flex", alignItems: "center", gap: 14 }}>
-          <div style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--aj-gold)", flexShrink: 0 }} />
-          <p style={{ fontFamily: "var(--font-sans)", fontSize: 13, color: "rgba(245,240,232,0.45)", margin: 0 }}>Los vídeos de clientes se añadirán próximamente.</p>
+        <div style={cardStyle}>
+          <div style={frameStyle} />
+          {videoAllowed ? (
+            <iframe
+              id="vimeo-varios"
+              src={"https://player.vimeo.com/video/" + VARIOS_ID + "?badge=0&autopause=0&muted=1&player_id=vimeo-varios&app_id=58479"}
+              allow="autoplay; fullscreen; picture-in-picture"
+              style={iframeStyle}
+              title="Testimonio Varios"
+            />
+          ) : (
+            <VideoConsentBlock />
+          )}
         </div>
       </div>
     </section>
@@ -263,7 +342,7 @@ function PersonalShopper() {
       <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(135deg, rgba(10,8,5,0.45) 0%, rgba(30,20,5,0.28) 100%)" }} />
       <div style={{ position: "relative", zIndex: 2, maxWidth: 1240, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 40 : 72, alignItems: "center" }}>
         <div style={{ position: "relative", order: isMobile ? 2 : 1 }}>
-          <img src="../../assets/aroa-jon-irun.jpg" alt="Aroa y Jon en Irun" style={{ width: "100%", height: isMobile ? 300 : 520, objectFit: "cover", objectPosition: "center", display: "block" }} />
+          <img src="../../assets/aroa-jon-pared.jpg" alt="Aroa y Jon" style={{ width: "100%", height: isMobile ? 320 : 480, objectFit: "cover", objectPosition: "center center", display: "block" }} />
           <div style={{ position: "absolute", inset: 14, border: "1px solid rgba(198,167,94,0.3)", pointerEvents: "none" }} />
         </div>
         <div style={{ order: isMobile ? 1 : 2 }}>
@@ -351,7 +430,9 @@ function NewsCard(props) {
         </div>
       ) : (
         <div style={{ width: "100%", paddingBottom: "52%", position: "relative", background: "linear-gradient(135deg, #f5f0e8 0%, #ede7d9 100%)" }}>
-          <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-serif)", fontSize: 48, color: "rgba(198,167,94,0.25)" }}>A&J</div>
+          <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <img src="../../assets/logo-dorado-transparente.png" alt="Aroa & Jon" style={{ height: 90, width: "auto", opacity: 0.6 }} />
+          </div>
         </div>
       )}
       <div style={{ padding: "18px 20px 22px", flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
@@ -444,7 +525,7 @@ function Contact() {
             </div>
             <div>
               <div style={{ fontFamily: "var(--font-sans)", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(198,167,94,0.7)", marginBottom: 6 }}>Dirección</div>
-              <div style={{ fontFamily: "var(--font-serif)", fontSize: isMobile ? 16 : 18, color: "var(--aj-paper)" }}>Av. Navarra 3, Irun</div>
+              <div style={{ fontFamily: "var(--font-serif)", fontSize: isMobile ? 16 : 18, color: "var(--aj-paper)" }}>Av. Iparralde, 3 — Irún — Gipuzkoa</div>
               <div style={{ fontFamily: "var(--font-sans)", fontSize: 13, color: "rgba(245,240,232,0.4)", marginTop: 4 }}>Gipuzkoa</div>
             </div>
           </div>
@@ -484,7 +565,7 @@ function ContactForm() {
         api_key: "sIwxIVz8VzunIvELlu4jBA",
         first_name: nombre,
         email: email,
-        fields: { phone: telefono, reason: reason }
+        fields: { telefono: telefono, razon: reason, cuentanos: fd.get("mensaje") || "" }
       })
     })
     .then(function(r) { return r.json(); })
@@ -502,8 +583,8 @@ function ContactForm() {
   if (sent) {
     return (
       <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(198,167,94,0.3)", padding: 48, display: "flex", flexDirection: "column", justifyContent: "center", minHeight: 420 }}>
-        <div style={{ fontFamily: "var(--font-serif)", fontSize: 30, color: "var(--aj-gold)", marginBottom: 16 }}>Mensaje recibido.</div>
-        <p style={{ fontFamily: "var(--font-sans)", fontSize: 16, lineHeight: 1.6, color: "rgba(245,240,232,0.55)", margin: 0 }}>Aroa o Jon te contactarán en menos de 24 horas.</p>
+        <div style={{ fontFamily: "var(--font-serif)", fontSize: 30, color: "var(--aj-gold)", marginBottom: 16 }}>¡Perfecto, ya casi! 🙌</div>
+        <p style={{ fontFamily: "var(--font-sans)", fontSize: 16, lineHeight: 1.6, color: "rgba(245,240,232,0.55)", margin: 0 }}>Te hemos enviado un email de confirmación. Dale al botón que verás dentro — es solo para asegurarnos de que no eres un robot 🤖 — y en cuanto lo hagas Aroa o Jon te contactarán personalmente.</p>
       </div>
     );
   }
@@ -524,9 +605,9 @@ function ContactForm() {
         </span>
       </label>
       {error && <div style={{ fontFamily: "var(--font-sans)", fontSize: 13, color: "var(--aj-gold)" }}>{error}</div>}
-      <Button variant="primary" size="lg" fullWidth as="button" disabled={loading}>
+      <button type="submit" disabled={loading} style={{ fontFamily: "var(--font-sans)", fontSize: 14, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", background: loading ? "rgba(198,167,94,0.5)" : "var(--aj-gold)", color: "var(--aj-black)", border: "none", padding: "19px 36px", width: "100%", cursor: loading ? "not-allowed" : "pointer" }}>
         {loading ? "Enviando..." : "Enviar"}
-      </Button>
+      </button>
     </form>
   );
 }
@@ -590,6 +671,12 @@ function Footer() {
           <div style={{ display: "flex", gap: 20 }}>
             <a href="/aviso-legal" style={{ fontFamily: "var(--font-sans)", fontSize: 11, color: "rgba(245,240,232,0.35)", textDecoration: "none", letterSpacing: "0.06em" }}>Aviso Legal</a>
             <a href="/politica-de-privacidad" style={{ fontFamily: "var(--font-sans)", fontSize: 11, color: "rgba(245,240,232,0.35)", textDecoration: "none", letterSpacing: "0.06em" }}>Política de Privacidad</a>
+            <a href="/politica-de-cookies" style={{ fontFamily: "var(--font-sans)", fontSize: 11, color: "rgba(245,240,232,0.35)", textDecoration: "none", letterSpacing: "0.06em" }}>Política de Cookies</a>
+            <button
+              type="button"
+              onClick={function () { if (window.ajConsent) window.ajConsent.open(); }}
+              style={{ fontFamily: "var(--font-sans)", fontSize: 11, color: "rgba(245,240,232,0.35)", background: "none", border: 0, padding: 0, cursor: "pointer", letterSpacing: "0.06em" }}
+            >Configurar cookies</button>
           </div>
         </div>
       </div>
